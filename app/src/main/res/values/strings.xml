@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">RoomPractice</string>
+    <string name="get_flowers">get flowers</string>
+    <string name="get_bouquets">get bouquets</string>
+    <string name="get_available_bouquets">get available bouquets</string>
+    <string name="get_buy_bouquet">buy bouquet</string>
 </resources>
