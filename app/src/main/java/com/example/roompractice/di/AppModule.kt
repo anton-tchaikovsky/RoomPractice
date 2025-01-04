@@ -2,7 +2,6 @@ package com.example.roompractice.di
 
 import android.content.Context
 import androidx.lifecycle.ViewModelProvider
-import androidx.room.Room
 import com.example.roompractice.com.example.roompractice.domain.interactor.Interactor
 import com.example.roompractice.com.example.roompractice.domain.interactor.InteractorImpl
 import com.example.roompractice.data.data_source.LocalDataSource
@@ -32,16 +31,11 @@ interface AppModule {
     @Binds
     fun bindViewModelFactory(factory: FlowersViewModelFactory): ViewModelProvider.Factory
 
-    companion object{
+    companion object {
         @Provides
         @Singleton
-        fun provideDatabase(context: Context): FlowersDatabase = Room.databaseBuilder(
-            context,
-            FlowersDatabase::class.java,
-            "flowersDatabase"
-        )
-            .createFromAsset("flowersDatabase.db")
-            .build()
+        fun provideDatabase(context: Context): FlowersDatabase =
+            FlowersDatabase.createFlowersDatabase(context)
     }
 
 }

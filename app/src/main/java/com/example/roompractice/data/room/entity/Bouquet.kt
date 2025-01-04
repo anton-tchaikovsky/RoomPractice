@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.roompractice.com.example.roompractice.data.room.entity.FlowersNumber
+import com.example.roompractice.com.example.roompractice.domain.entity.DesignDto
 
 @Entity(tableName = "bouquets", indices = [Index(value = ["name"], unique = true)])
 class Bouquet (
@@ -12,5 +13,7 @@ class Bouquet (
     val id: Int,
     val name: String,
     @Embedded
-    val flowersNumber: FlowersNumber
+    val flowersNumber: FlowersNumber,
+    @Embedded
+    val design: DesignDto
 )

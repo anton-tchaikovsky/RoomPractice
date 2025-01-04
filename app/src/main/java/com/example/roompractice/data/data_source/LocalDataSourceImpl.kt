@@ -23,6 +23,6 @@ class LocalDataSourceImpl @Inject constructor(database: FlowersDatabase): LocalD
     override suspend fun getBouquet(name: String): Bouquet? =
         bouquetsDao.getBouquetsByName(name)
 
-    override suspend fun reduceFlowersNumber(flower: FlowersType, inequality: Int) =
-        flowersDao.reduceFlowersNumber(flower, inequality)
+    override suspend fun reduceFlowersNumbers(flowers: Map<FlowersType, Int>) =
+        flowersDao.reduceFlowersNumbers(flowers)
 }

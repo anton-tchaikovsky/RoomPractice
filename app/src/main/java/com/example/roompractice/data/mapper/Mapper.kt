@@ -3,18 +3,29 @@ package com.example.roompractice.com.example.roompractice.data.mapper
 import com.example.roompractice.com.example.roompractice.data.room.entity.FlowersNumber
 import com.example.roompractice.com.example.roompractice.domain.entity.BouquetDto
 import com.example.roompractice.com.example.roompractice.domain.entity.FlowerDto
+import com.example.roompractice.com.example.roompractice.domain.entity.FlowersDescriptionDto
 import com.example.roompractice.com.example.roompractice.domain.entity.FlowersType
 import com.example.roompractice.data.room.entity.Bouquet
 import com.example.roompractice.data.room.entity.Flower
 
-fun mapToFlowerDto(flower: Flower): FlowerDto = flower.flower
+fun mapToFlowersDescriptionDto(flower: Flower): FlowersDescriptionDto = flower.flower
 
 fun mapToBouquetDto(bouquet: Bouquet?): BouquetDto? =
     bouquet?.let {
         BouquetDto(
             name = bouquet.name,
-            flowers = extractFlowers(bouquet.flowersNumber)
-        )}
+            flowers = extractFlowers(bouquet.flowersNumber),
+            design = bouquet.design
+        )
+    }
+
+fun mapFromFlowersDto(flowers: List<FlowerDto>): Map<FlowersType, Int>{
+    val flowersMap = mutableMapOf<FlowersType, Int>()
+    flowers.forEach {
+        flowersMap[it.flower] = it.number
+    }
+    return flowersMap
+}
 
 private fun extractFlowers(flowersNumber: FlowersNumber): List<FlowerDto> {
     val flowers = mutableListOf<FlowerDto>()

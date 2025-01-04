@@ -11,5 +11,5 @@ interface LocalDataSource {
 
     suspend fun getBouquet(name: String): Bouquet?
 
-    suspend fun reduceFlowersNumber(flower: FlowersType, inequality: Int)
+    suspend fun reduceFlowersNumbers(flowers: Map<FlowersType, Int>)
 }

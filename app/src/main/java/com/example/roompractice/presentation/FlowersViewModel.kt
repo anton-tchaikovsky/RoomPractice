@@ -3,7 +3,7 @@ package com.example.roompractice.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.roompractice.com.example.roompractice.domain.entity.BouquetDto
-import com.example.roompractice.com.example.roompractice.domain.entity.FlowerDto
+import com.example.roompractice.com.example.roompractice.domain.entity.FlowersDescriptionDto
 import com.example.roompractice.com.example.roompractice.domain.interactor.Interactor
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -12,9 +12,9 @@ import javax.inject.Inject
 
 class FlowersViewModel @Inject constructor(private val interactor: Interactor): ViewModel() {
 
-    private val _flowersFlow: MutableSharedFlow<List<FlowerDto>> = MutableSharedFlow()
+    private val _flowersFlow: MutableSharedFlow<List<FlowersDescriptionDto>> = MutableSharedFlow()
 
-    val flowersFlow: SharedFlow<List<FlowerDto>>
+    val flowersFlow: SharedFlow<List<FlowersDescriptionDto>>
         get () = _flowersFlow
 
     private val _bouquetsFlow: MutableSharedFlow<List<BouquetDto>> = MutableSharedFlow()
@@ -29,7 +29,7 @@ class FlowersViewModel @Inject constructor(private val interactor: Interactor): 
 
     fun getFlowers(){
         viewModelScope.launch {
-            _flowersFlow.emit(interactor.getFlowers())
+            _flowersFlow.emit(interactor.getFlowersDescriptions())
         }
     }
 
